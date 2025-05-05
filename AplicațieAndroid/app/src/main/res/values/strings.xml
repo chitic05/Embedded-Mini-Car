@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="on_text">ON</string>
+    <string name="off_text">OFF</string>
+    <string name="disconnected">disconnected</string>
+    <string name="connected">connected</string>
+    <string name="permissionsDeclined">PERMISSIONS DECLINED</string>
+</resources>
