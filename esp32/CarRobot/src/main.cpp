@@ -4,6 +4,7 @@
 Servo servo;
 int forwardMotor = 12, reverseMotor = 14;
 int m = 0, s = 0, steeringAngle;
+bool isSteering;
 btManager *bt = nullptr;
 char *message = new char[128];
 
@@ -20,6 +21,7 @@ void setup() {
   servo.attach(27);
   steeringAngle = 100;
   servo.write(steeringAngle);
+  isSteering = false;
 }
 
 void loop() {
@@ -34,9 +36,18 @@ void processMessage(const char* message){
       else if(strcmp(message, "stop") == 0) m=0;
      
 
-      if(strcmp(message, "left") == 0) s=-1;
-      else if(strcmp(message, "right") == 0) s=1;
-      else if(strcmp(message, "stopSteering") == 0) s=0;
+      if(strcmp(message, "left") == 0){
+        s=-1;
+        isSteering = true;
+      }
+      else if(strcmp(message, "right") == 0){
+        s=1;
+        isSteering = true;
+      }
+      else if(strcmp(message, "stopSteering") == 0){
+        s=0;
+        isSteering = true;
+      }
       
     }
 
@@ -55,8 +66,9 @@ void drive(){
       digitalWrite(reverseMotor, LOW);
       break;
   }
-
-  switch(s){
+  
+  if(isSteering){
+    switch(s){
     case 1:
       steeringAngle = 120;
       break;
@@ -66,6 +78,9 @@ void drive(){
     default:
       steeringAngle = 100;
       break;
+    } 
+    servo.write(steeringAngle);
+    isSteering = false;
   }
-  servo.write(steeringAngle);
+  
 }
