@@ -58,7 +58,7 @@ Using PlatformIO in VS Code provides an easier way to select the serial port and
 ## How it works (high level)
 
 - Android app sends commands (via Bluetooth) to the ESP32.
-- ESP32 firmware receives commands and actuates motors/sensors accordingly.
+- ESP32 firmware receives commands and actuates motors accordingly.
 
 ## Contributing
 
@@ -74,12 +74,6 @@ If you add new hardware wiring notes or pin mappings, please update this README.
 - Android: If Bluetooth permissions or scanning fail, check the app permissions and location settings (Android requires location permission for scanning on some versions).
 - ESP32: If upload fails, confirm the serial port and that the board is in programming mode; try pressing the ESP32 boot/EN buttons during upload if needed.
 
-## License
-
-This project does not include a license file. Add a `LICENSE` if you want to open-source the project. A common choice is the MIT License.
-
 ## Contact
 
 Maintainer: repository owner (see GitHub `chitic05`).
-
-If you'd like, I can add badges, a wiring diagram, or small CONTRIBUTING.md next.
